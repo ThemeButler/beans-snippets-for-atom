@@ -50,15 +50,15 @@ This example removes the entire class=" " attribute, along with any assigned cla
 
 **Original:**
 
-<pre><nav class="tm-nav uk-float-right"></pre>
+<pre>&lt;nav class=&quot;tm-nav uk-float-right&quot;&gt;</pre>
 
 **Remove attribute value:**
 
-<pre><nav class="tm-nav"></pre>
+<pre>&lt;nav class=&quot;tm-nav&quot;&gt;</pre>
 
 **Remove attribute:**
 
-<pre><nav></pre>
+<pre>&lt;nav&gt;</pre>
 
 ### Beans Replace Attribute
 
