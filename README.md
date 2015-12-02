@@ -14,7 +14,19 @@ Add an attribute to any element with a markup-id.
 
 **Shortcut:** beans_add_attribute
 
-**Output:** _beans_add_attribute( 'markup_id', 'attribute_type', 'attribute' );_
+**Output:**
+
+<pre>beans_add_attribute( 'markup_id', 'attribute_type', 'attribute' );</pre>
+
+#### Examples:
+
+<pre>beans_add_attribute( 'beans_primary_nav', 'class', 'tm-nav' );</pre>
+
+This example adds the _tm-nav_ class.
+
+<pre>beans_remove_attribute( 'beans_header', 'data-uk-sticky' );</pre>
+
+This example adds an empty _data_uk_sticky_ attribute, which is used by the UIkit Sticky component.
 
 ### Beans Remove Attribute
 
@@ -22,7 +34,9 @@ Remove an attribute to any element with a markup-id. Can be used to remove a spe
 
 **Shortcut:** beans_remove_attribute
 
-Output: _beans_remove_attribute( 'markup_id', 'attribute_type', 'attribute' );_
+**Output:**
+
+<pre>beans_remove_attribute( 'markup_id', 'attribute_type', 'attribute' );</pre>
 
 #### Examples:
 
