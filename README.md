@@ -12,31 +12,39 @@ This package adds support for Beans related snippets in the Atom editor.
 
 Add an attribute to any element with a markup-id.
 
-Shortcut: **beans_add_attribute**
+**Shortcut:** beans_add_attribute
 
-Output: _beans_add_attribute( 'markup_id', 'attribute_type', 'attribute' );_
+**Output:** _beans_add_attribute( 'markup_id', 'attribute_type', 'attribute' );_
 
 ### Beans Remove Attribute
 
 Remove an attribute to any element with a markup-id. Can be used to remove a specific attribute value (like a class) or the attribute itself. See below for an example.
 
-Shortcut: **beans_remove_attribute**
+**Shortcut:** beans_remove_attribute
 
 Output: _beans_remove_attribute( 'markup_id', 'attribute_type', 'attribute' );_
 
-Examples:
+#### Examples:
 
-_beans_remove_attribute( 'beans_primary_nav', 'class', 'uk-float-right' );_
+<pre>beans_remove_attribute( 'beans_primary_nav', 'class', 'uk-float-right' );</pre>
 
-This example removes the **uk-float-right** class, while leaving the rest of the classes intact.
+This example removes the _uk-float-right_ class, while leaving the rest of the classes intact.
 
-_beans_remove_attribute( 'beans_primary_nav', 'class' );_
+<pre>beans_remove_attribute( 'beans_primary_nav', 'class' );</pre>
 
 This example removes the entire class=" " attribute, along with any assigned classes.
 
-Original: <nav class="tm-nav uk-float-right">
-Remove attribute value: <nav class="tm-nav">
-Remove attribute: <nav>
+**Original:**
+
+<pre><nav class="tm-nav uk-float-right"></pre>
+
+**Remove attribute value:**
+
+<pre><nav class="tm-nav"></pre>
+
+**Remove attribute:**
+
+<pre><nav></pre>
 
 ### Beans Replace Attribute
 
