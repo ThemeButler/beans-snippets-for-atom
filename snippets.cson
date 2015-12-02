@@ -1,31 +1,38 @@
 ".text.html.php":
 	"beans add attribute":
 		"prefix": "beans_add_attribute"
-		"body": "beans_add_attribute( '${1:markup_id}', '${2:class}', '${3:your-class}' );"
+		"body": """beans_add_attribute( '${1:markup_id}', '${2:class}', '${3:your-class}' );
+		$4"""
 
 	"beans remove attribute":
 		"prefix": "beans_remove_attribute"
-		"body": "beans_remove_attribute( '${1:markup_id}', '${2:class}', '${3:your-class}' );"
+		"body": """beans_remove_attribute( '${1:markup_id}', '${2:class}', '${3:your-class}' );
+		$4"""
 
 	"beans replace attribute":
 		"prefix": "beans_replace_attribute"
-		"body": "beans_replace_attribute( '${1:markup_id}', '${2:class}', '${3:your-class}' );"
+		"body": """beans_replace_attribute( '${1:markup_id}', '${2:class}', '${3:your-class}' );
+		$4"""
 
 	"beans remove markup":
 		"prefix": "beans_remove_action"
-		"body": "beans_remove_action( '${1:markup_id}' );"
+		"body": """beans_remove_action( '${1:markup_id}' );
+		$2"""
 
 	"beans remove markup":
 		"prefix": "beans_remove_markup"
-		"body": "beans_remove_markup( '${1:markup_id}' );"
+		"body": """beans_remove_markup( '${1:markup_id}' );
+		$2"""
 
 	"beans modify action":
 		"prefix": "beans_modify_action_hook"
-		"body": "beans_modify_action_hook( '${1:markup_id_after_markup}' );"
+		"body": """beans_modify_action_hook( '${1:markup_id_after_markup}' );
+		$2"""
 
 	"beans set layout":
 		"prefix": "beans_set_layout"
-		"body": "beans_add_filter( 'beans_default_layout', '${1:c-sp-ss}' );"
+		"body": """beans_add_filter( 'beans_default_layout', '${1:c-sp-ss}' );
+		$2"""
 
 	"beans load document":
 		"prefix": "beans_load"
@@ -43,7 +50,9 @@
 		  ${2:beans_uikit_enqueue_components( array( '${3:core_component}' ) );}
 		  ${4:beans_uikit_enqueue_components( array( '${5:addon_component}' ), 'add-ons' );}
 
-		}"""
+		}
+
+		$6"""
 
 	"beans show uikit":
 		"prefix": "beans_show_uikit"
@@ -56,7 +65,9 @@
 		  print_r( $_beans_uikit_enqueued_items );
 		  print '</pre>';
 
-		}"""
+		}
+
+		$1"""
 
 
 	"beans add markup":
