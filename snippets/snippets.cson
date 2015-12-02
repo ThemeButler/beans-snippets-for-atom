@@ -1,133 +1,211 @@
-".text.html.php":
-	"beans add attribute":
-		"prefix": "beans_add_attribute"
-		"body": """beans_add_attribute( '${1:markup_id}', '${2:class}', '${3:your-class}' );
-		$4"""
+".text.html, .text.html.php":
 
-	"beans remove attribute":
-		"prefix": "beans_remove_attribute"
-		"body": """beans_remove_attribute( '${1:markup_id}', '${2:class}', '${3:your-class}' );
-		$4"""
+	'Beans Add Attribute':
+		'prefix':'beans-add-attribute'
+		'body' : """
+		beans_add_attribute( '${1:markup_id}', '${2:attribute_type}', '${3:attribute_value}' );
+		$4
+		"""
 
-	"beans replace attribute":
-		"prefix": "beans_replace_attribute"
-		"body": """beans_replace_attribute( '${1:markup_id}', '${2:class}', '${3:your-class}' );
-		$4"""
+	'Beans Add Attribute (with example)':
+		'prefix':'beans-add-attribute:ex'
+		'body' : """
+		beans_add_attribute( '${1:beans_primary_nav}', '${2:class}', '${3:tm-nav}' );
+		$4
+		"""
 
-	"beans remove action":
-		"prefix": "beans_remove_action"
-		"body": """beans_remove_action( '${1:markup_id}' );
-		$2"""
+	'Beans Remove Attribute':
+		'prefix':'beans-remove-attribute'
+		'body' : """
+		beans_remove_attribute( '${1:markup_id}', '${2:attribute_type}', '${3:attribute_value}' );
+		$4
+		"""
 
-	"beans remove markup":
-		"prefix": "beans_remove_markup"
-		"body": """beans_remove_markup( '${1:markup_id}' );
-		$2"""
+	'Beans Remove Attribute (with example)':
+		'prefix':'beans-remove-attribute:ex'
+		'body' : """
+		beans_remove_attribute( '${1:beans_primary_nav}', '${2:class}', '${3:uk-float-right}' );
+		$4
+		"""
 
-	"beans modify action":
-		"prefix": "beans_modify_action_hook"
-		"body": """beans_modify_action_hook( '${1:markup_id_after_markup}' );
-		$2"""
+	'Beans Replace Attribute':
+		'prefix':'beans-replace-attribute'
+		'body' : """
+		beans_replace_attribute( '${1:markup_id}', '${2:attribute_type}', '${3:old_attribute_value}', '${4:new_attribute_value}' );
+		$5
+		"""
 
-	"beans set layout":
-		"prefix": "beans_set_layout"
-		"body": """beans_add_filter( 'beans_default_layout', '${1:c-sp-ss}' );
-		$2"""
+	'Beans Replace Attribute (with example)':
+		'prefix':'beans-replace-attribute:ex'
+		'body' : """
+		beans_replace_attribute( '${1:beans_primary_nav}', '${2:class}', '${3:uk-float-right}', '${4:uk-float-left}' );
+		$5
+		"""
 
-	"beans load document":
-		"prefix": "beans_load"
-		"body": """// Load Beans
-		beans_load_document();"""
+	'Beans Remove Markup':
+		'prefix':'beans-remove-markup'
+		'body' : """
+		beans_remove_markup( '${1:markup_id}' );
+		$2
+		"""
 
+	'Beans Remove Markup (with example)':
+		'prefix':'beans-remove-markup:ex'
+		'body' : """
+		beans_remove_markup( '${1:beans_primary_nav}' );
+		$2
+		"""
 
-	"beans enqueue uikit":
-		"prefix": "beans_enque_uikit"
-		"body": """// Include the needed uikit components
+	'Beans Remove Action':
+		'prefix':'beans-remove-action'
+		'body' : """
+		beans_remove_action( '${1:markup_id}' );
+		$2
+		"""
+
+	'Beans Remove Action (with example)':
+		'prefix':'beans-remove-action:ex'
+		'body' : """
+		beans_remove_action( '${1:beans_post_title}' );
+		$2
+		"""
+
+	'Beans Modify Action':
+		'prefix':'beans-modify-action'
+		'body' : """
+		beans_modify_action_hook( '${1:markup_id}' );
+		$2
+		"""
+
+	'Beans Set Layout':
+		'prefix':'beans-set-layout'
+		'body' : """
+		beans_add_filter( 'beans_default_layout', '${1:c-sp-ss}' );
+		$2
+		"""
+
+	'Beans Load Document':
+		'prefix':'beans-load-doc'
+		'body' : """
+		// Load Beans
+		beans_load_document();
+		"""
+
+	'Beans Enqueue UIkit Components':
+		'prefix':'beans-enqueue-uikit'
+		'body' : """
+		// Include the needed uikit components
 		add_action( 'beans_uikit_enqueue_scripts', '${1:function_name}' );
 
 		function ${1:function_name}() {
 
-		  ${2:beans_uikit_enqueue_components( array( '${3:core_component}' ) );}
-		  ${4:beans_uikit_enqueue_components( array( '${5:addon_component}' ), 'add-ons' );}
+		${2:beans_uikit_enqueue_components( array( '${3:core_component}' ) );}
+		${4:beans_uikit_enqueue_components( array( '${5:addon_component}' ), 'add-ons' );}
 
 		}
 
-		$6"""
+		$6
+		"""
 
-	"beans show uikit":
-		"prefix": "beans_show_uikit"
-		"body": """// Show loaded UIkit components
+	'Beans Dequeue UIkit Components':
+		'prefix':'beans-dequeue-uikit'
+		'body' : """
+		// Dequeue unused uikit components
+		add_action( 'beans_uikit_enqueue_scripts', '${1:function_name}' );
+
+		function ${1:function_name}() {
+
+			$components = array(
+		      '${2:icon}',
+			  '${3:pagination}'
+		    );
+		    beans_uikit_dequeue_components( $components );
+
+		}
+
+		$4
+		"""
+
+	'Beans Show UIkit Components':
+		'prefix':'beans-show-uikit'
+		'body' : """
+		// Show loaded UIkit components
 		add_action( 'wp_enqueue_scripts', 'print_uikit_array' );
 		function print_uikit_array() {
-		  global $_beans_uikit_enqueued_items;
+		global $_beans_uikit_enqueued_items;
 
-		  print '<pre>';
-		  print_r( $_beans_uikit_enqueued_items );
-		  print '</pre>';
+		print '<pre>';
+		print_r( $_beans_uikit_enqueued_items );
+		print '</pre>';
 
 		}
 
-		$1"""
+		$1
+		"""
 
-
-	"beans add markup":
-		"prefix": "beans_add_markup"
-		"body": """// ${1:Enter comment}
+	'Beans Add Markup':
+		'prefix':'beans-add-markup'
+		'body' : """
+		// ${1:Enter comment}
 		beans_add_action( '${2:markup_id_after_markup}', '${3:function_name}' );
 		function ${3:function_name}(${4}) { ?>
 
-			${5}
+		  ${5}
 
 		<? }
 
-		$6"""
+		$6
+		"""
 
-	"beans register widget area":
-		"prefix": "beans_register_widgetarea"
-		"body": """// ${1:Register the bottom widget area}
+	'Beans Register Widget Area':
+		'prefix':'beans-register-widgetarea'
+		'body' : """
+		// ${1:Register the bottom widget area}
 		beans_add_action( 'widgets_init', '${2:function_name}' );
 
 		function ${2:function_name}() {
 
-			beans_register_widget_area( array(
-				'name' => '${3:Bottom}',
-				'id' => '${4:Bottom}',
-				'description' => '${5:Widgets in this area will be shown in the bottom section as a grid.}',
-				'beans_type' => '${6:grid}'
-			) );
+		  beans_register_widget_area( array(
+			  'name' => '${3:Bottom}',
+			  'id' => '${4:Bottom}',
+			  'description' => '${5:Widgets in this area will be shown in the bottom section as a grid.}',
+			  'beans_type' => '${6:grid}'
+		  ) );
 
 		}
 
-		$7"""
+		$7
+		"""
 
-
-	"beans output widget area":
-		"prefix": "beans_output_widgetarea"
-		"body": """// ${1:Output the bottom widget area}
+	'Beans Output Widget Area':
+		'prefix':'beans-output-widgetarea'
+		'body' : """
+		// ${1:Output the bottom widget area}
 		beans_add_action( '${2:beans_main_after_markup}', '${3:function_name}' );
 
 		function ${3:function_name}() {
 
-			echo beans_widget_area( '${3:bottom}' );
+		  echo beans_widget_area( '${3:bottom}' );
 
 		}
 
-		$7"""
+		$7
+		"""
 
-
-	"beans register and output widget area":
-		"prefix": "beans_new_widgetarea"
-		"body": """// ${1:Register the bottom widget area}
+	'Beans Register & Output Widgetarea':
+		'prefix':'beans-new-widgetarea'
+		'body' : """
+		// ${1:Register the bottom widget area}
 		beans_add_action( 'widgets_init', '${2:function_name}' );
 
 		function ${2:function_name}() {
 
-			beans_register_widget_area( array(
-				'name' => '${3:Bottom}',
-				'id' => '${4:Bottom}',
-				'description' => '${5:Widgets in this area will be shown in the bottom section as a grid.}',
-				'beans_type' => '${6:grid}'
-			) );
+		  beans_register_widget_area( array(
+			  'name' => '${3:Bottom}',
+			  'id' => '${4:Bottom}',
+			  'description' => '${5:Widgets in this area will be shown in the bottom section as a grid.}',
+			  'beans_type' => '${6:grid}'
+		  ) );
 
 		}
 
@@ -136,24 +214,27 @@
 
 		function ${9:function_name}() {
 
-			echo beans_widget_area( '${4:Bottom}' );
+		  echo beans_widget_area( '${4:Bottom}' );
 
 		}
 
-		$7"""
+		$7
+		"""
 
-	"beans adjust grid":
-		"prefix": "beans_adjust_grid"
-		"body": """// ${1:Adjust the grid}
+	'Beans Adjust Grid':
+		'prefix':'beans-adjust-grid'
+		'body' : """
+		// ${1:Adjust the grid}
 		add_filter( 'beans_layout_grid_settings', '${2:function_name}' );
 		function ${2:function_name}( $args ) {
 
-		    return array_merge( $args, array(
-		        'grid' => ${3:10},
-				'sidebar_primary' => ${4:2},
-		        ${5:'sidebar_secondary' => ${6:2} }
-		    ) );
+		  return array_merge( $args, array(
+			  'grid' => ${3:10},
+			  'sidebar_primary' => ${4:2},
+			  ${5:'sidebar_secondary' => ${6:2} }
+		  ) );
 
 		}
 
-		$7"""
+		$7
+		"""
