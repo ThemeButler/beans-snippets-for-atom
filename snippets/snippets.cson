@@ -14,7 +14,7 @@
 		"body": """beans_replace_attribute( '${1:markup_id}', '${2:class}', '${3:your-class}' );
 		$4"""
 
-	"beans remove markup":
+	"beans remove action":
 		"prefix": "beans_remove_action"
 		"body": """beans_remove_action( '${1:markup_id}' );
 		$2"""
@@ -100,6 +100,47 @@
 
 		$7"""
 
+
+	"beans output widget area":
+		"prefix": "beans_output_widgetarea"
+		"body": """// ${1:Output the bottom widget area}
+		beans_add_action( '${2:beans_main_after_markup}', '${3:function_name}' );
+
+		function ${3:function_name}() {
+
+			echo beans_widget_area( '${3:bottom}' );
+
+		}
+
+		$7"""
+
+
+	"beans register and output widget area":
+		"prefix": "beans_new_widgetarea"
+		"body": """// ${1:Register the bottom widget area}
+		beans_add_action( 'widgets_init', '${2:function_name}' );
+
+		function ${2:function_name}() {
+
+			beans_register_widget_area( array(
+				'name' => '${3:Bottom}',
+				'id' => '${4:Bottom}',
+				'description' => '${5:Widgets in this area will be shown in the bottom section as a grid.}',
+				'beans_type' => '${6:grid}'
+			) );
+
+		}
+
+		// ${7:Output the bottom widget area}
+		beans_add_action( '${8:beans_main_after_markup}', '${9:function_name}' );
+
+		function ${9:function_name}() {
+
+			echo beans_widget_area( '${4:Bottom}' );
+
+		}
+
+		$7"""
 
 	"beans adjust grid":
 		"prefix": "beans_adjust_grid"

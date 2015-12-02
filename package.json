@@ -1,0 +1,18 @@
+{
+  "name": "beans-snippets-for-atom",
+  "main": "./lib/beans-snippets-for-atom",
+  "version": "1.0.0",
+  "description": "A Snippet Plugin for Beans Framework",
+  "keywords": [
+  ],
+  "activationCommands": {
+    "atom-workspace": "beans-snippets-for-atom:toggle"
+  },
+  "repository": "https://github.com/ThemeButler/beans-snippets-for-atom",
+  "license": "GPL",
+  "engines": {
+    "atom": ">=0.174.0 <2.0.0"
+  },
+  "dependencies": {
+  }
+}
